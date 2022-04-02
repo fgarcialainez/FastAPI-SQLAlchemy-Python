@@ -9,11 +9,12 @@ from dotenv import load_dotenv
 # Load the .env file
 load_dotenv()
 
+# Create the DB connection url
 SQLALCHEMY_DATABASE_URL = os.getenv("DB_CONN")
 
-print(SQLALCHEMY_DATABASE_URL)
-
+# Create the engine and session
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Get a reference to the base model
 Base = declarative_base()
